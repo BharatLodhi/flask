@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+  <title>Plotting functions in JavaScript using the function plot library</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="/static/new.css" />
+  <script type="text/javascript" src="{{url_for('static',filename='new.js')}}"></script>
+  <script src="https://mauriciopoppe.github.io/function-plot/js/function-plot.js"></script>
+</head>
+
+<body>
+  <h2>Interactive function Summer</h2>
+  <div class="layer">
+  <section id="SumSettings">
+    <form action="http://localhost:5006/add" method="post">
+            <p>Enter number1:</p>
+            <p><input type="text" placeholder=" First Number" name="number1"/></p>
+            <p>Enter number2:</p>
+            <p><input type="text" placeholder=" Second Number" name="number2"/></p>
+            <p><input type="submit"  value="submit"/></p>
+    </form>
+
+  </section>
+  <section id="Sum">
+    <p id="sum"></p>
+    <h1>sum is :{{finalsum}}</h1>
+    <script>
+      var x="Bharat";
+    document.getElementById("sum").innerHTML = summer('{{finalsum}}');
+  </script> 
+  </section>
+  </div>
+</body>
+
+</html>
