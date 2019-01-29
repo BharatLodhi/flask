@@ -1,0 +1,25 @@
+{%extends "base_template.html"%}
+{%block content%}
+  <section id="SumSettings">
+    <form action="http://localhost:5000/add" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" />
+      <input type="submit" value="upload" />
+    </form>
+
+  </section>
+  <section id="Sum1">
+    
+  </section>
+  {% if data1 != None %}
+    <!-- <script>
+      var x="Bharat";
+    document.getElementById("sum").innerHTML = "Sum is :" + '{{data1}}';
+  </script>  -->
+  <script type="text/javascript">
+        var  data ={{data1.data | safe}};
+        // var t=JSON.parse(data);
+       
+     </script>
+    <script type="text/javascript" src="static/practicegraph1.js?v=1.4"></script>
+    {% endif %}
+{% endblock content%}
