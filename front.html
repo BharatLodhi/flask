@@ -1,13 +1,22 @@
 {%extends "base_template.html"%}
 {%block content%}
   <section id="SumSettings">
-    <form action="http://localhost:5000/add" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:5000/plot" method="post" enctype="multipart/form-data">
       <input type="file" name="file" />
       <input type="submit" value="upload" />
     </form>
 
   </section>
   <section id="Sum1">
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            
+             {% for message in messages %}
+             <h1>{{ message }}</h1>
+             {% endfor %}
+          
+         {% endif %}
+      {% endwith %}
     
   </section>
   {% if data1 != None %}
@@ -20,6 +29,6 @@
         // var t=JSON.parse(data);
        
      </script>
-    <script type="text/javascript" src="static/practicegraph1.js?v=1.4"></script>
+    <script type="text/javascript" src="static/practicegraph1.js?v=1.5"></script>
     {% endif %}
 {% endblock content%}
