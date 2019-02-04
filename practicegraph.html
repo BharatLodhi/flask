@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <!-- Plotly.js -->
+	  <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+	  <meta charset="utf-8">
+	  <script src="https://d3js.org/d3.v4.min.js"></script>
+	   <!-- <script type="text/javascript" src="{{url_for('static',filename='practicegraph1.js')}}"></script> -->
+	    
+	</head>
+
+	<body>
+	  <!-- <h1>{{data}}</h1> -->
+	  <div>
+	  <span>
+	  	<input type="text" id="searchval">
+		<button id="mybutton" onclick="myfunction()">search</button>
+	  </span>
+	</div>
+	<div id="print"></div>
+		<div id="Sum1"></div>
+
+		<script type="text/javascript">
+			var  data ={{data1.data | safe}};
+
+		</script>
+		
+	    <script type="text/javascript" src="static/plotting.js?v=1.33"></script>
+	</body>
+</html>
+
