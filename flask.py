@@ -5,6 +5,7 @@ import os
 from werkzeug import secure_filename
 import using_umap as ump 
 import using_sklearnTsne as sktsne 
+import time
 
 # creates a Flask application, named app
 app = Flask(__name__)
@@ -42,16 +43,25 @@ def addition():
 		if file.filename == '':
 			flash('No selected file')
 			return render_template("inputfront.html",data1=None)
-
+		mndist=0.1
+		neighbours=15
+		s=request.form
+		if s['mndist']!='':
+			mndist=float(s['mndist'])
+		if s['neighbours']!='':
+			neighbours=int(s['neighbours'])
+		# return render_template("inputfront.html",data1=None,mndist=mndist,neighbours=neighbours)
 		if file and allowed_file(file.filename):
 		#            filename = secure_filename(file.filename)
 			filename = file.filename
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
 			filepath=os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-			data1=ump.reduceDim(filepath)
+			time1=time.time()
+			data1=ump.reduceDim(filepath,mndist,neighbours)
+			timeTaken=round(time.time()-time1,3);
 			os.remove(filepath)
-			return render_template("inputfront.html",data1={"data":data1})
+			return render_template("inputfront.html",data1={"data":data1},timeTaken=timeTaken)
 	return render_template("inputfront.html",data1=None)
 
 
