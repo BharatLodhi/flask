@@ -2,11 +2,24 @@
 {%block content%}
   <section id="SumSettings">
     <form action="http://localhost:5000/plot" method="post" enctype="multipart/form-data">
-      <input type="file" name="file" />
-      <input type="submit" value="upload" />
+      Upload File:-<br>
+      <input type="file" name="file" /><br><br>
+      <b>Main Parameters:-</b><br>
+      No. of Neighbours:<br>
+      <input type="text" name="neighbours" placeholder="default 15">
+       Min distance:<br>
+      <input type="text" name="mndist" placeholder="default 0.1">
+      <input type="submit" value="submit" />
     </form>
 
   </section>
+   <div>
+    <span>
+      <input type="text" id="searchval">
+    <button id="mybutton" onclick="myfunction()">search</button>
+    <span id="notfound"></span>
+    </span>
+  </div>
   <section id="Sum1">
     {% with messages = get_flashed_messages() %}
          {% if messages %}
@@ -19,16 +32,22 @@
       {% endwith %}
     
   </section>
+  <!-- <div id="timetaken"></div> -->
   {% if data1 != None %}
     <!-- <script>
       var x="Bharat";
     document.getElementById("sum").innerHTML = "Sum is :" + '{{data1}}';
   </script>  -->
+  
   <script type="text/javascript">
         var  data ={{data1.data | safe}};
-        // var t=JSON.parse(data);
+        var d1=new Date();
        
      </script>
-    <script type="text/javascript" src="static/practicegraph1.js?v=1.5"></script>
+    <script type="text/javascript" src="static/plotting2.js?v=1.4"></script>
+    <!-- <script type="text/javascript">
+        var  d2=new Date()-d1;
+        document.getElementById("timetaken").innerHTML= "Plotting time:"+ d2 + " ms,  Algorithm time:"+{{timeTaken}} +"s";
+     </script> -->
     {% endif %}
 {% endblock content%}
