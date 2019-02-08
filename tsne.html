@@ -1,0 +1,48 @@
+
+{%extends "layout.html"%}
+
+{%block setting%}
+    <form action="{{ url_for('using_Tsne') }}" method="post" enctype="multipart/form-data">
+		Upload File:-<br>
+		<input type="file" name="file" /><br><br>
+		<b>Main Parameters:-</b><br>
+		Perplexity:<br>
+		<input type="text" name="perplexity" placeholder="default 30"><br>
+		Iterations:<br>
+		<input type="text" name="iterations" placeholder="default 1000"><br>
+		<input type="submit" value="submit" />
+    </form>
+
+{%endblock setting%}
+
+{%block plotting%}
+	<div id="searchSetting">
+        <span>
+            <input type="text" id="searchval">
+            <button id="mybutton" onclick="myfunction()">search</button>
+            <span id="notfound"></span>
+        </span>
+    </div>
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            
+             {% for message in messages %}
+             <h1>{{ message }}</h1>
+             {% endfor %}
+          
+         {% endif %}
+      {% endwith %}
+    
+{%endblock plotting%}
+
+{%block jsfile%}
+	{% if data1 != None %}
+	  	<script type="text/javascript">
+	        var  data ={{data1.data | safe}};
+	        var d1=new Date();
+	       
+	    </script>
+	    <script type="text/javascript" src="static/plotting2.js?v=1.4"></script>
+    {% endif %}
+{%endblock jsfile%}
+
