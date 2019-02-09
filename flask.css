@@ -1,4 +1,4 @@
-h2{
+/* h2{
   text-align: center;
 }
 .layer{
@@ -24,4 +24,65 @@ section {
 
 #plotDisplay {
   width:600px;
+}
+ */
+h2{
+  text-align: center;
+}
+.layer{
+  width: 98%;
+  height: 100%;
+  margin: auto;
+}
+.layer:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+section {
+  /*box-shadow: 5px 5px 5px 5px grey;*/
+  height: 90%;
+  float:left;
+  padding: 1%;
+  margin:auto;
+}
+
+#plotSettings {
+  border:4px solid grey;
+  border-radius:15px;
+  width:25%;
+}
+
+#plotregion {
+  width:65%;
+  border:4px solid grey;
+  border-radius:15px;
+}
+#timetaken {
+  height: 20px;
+  padding: 0px;
+  margin:1px;
+  display: inline;
+  float: left;
+}
+
+#searchSetting {
+  height: 20px;
+  padding: 0px;
+  margin:1px;
+  display: inline;
+  float: right;
+}
+.forclear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+#plotDisplay {
+  display: block;
+  height: 90%;
+  width: 100%;
+  padding: 0px;
+  margin:auto;
+
 }
