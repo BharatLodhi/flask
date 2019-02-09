@@ -1,4 +1,4 @@
-
+<!-- 
 {%extends "layout.html"%}
 
 {%block setting%}
@@ -43,6 +43,66 @@
 	       
 	    </script>
 	    <script type="text/javascript" src="static/plotting2.js?v=1.4"></script>
+    {% endif %}
+{%endblock jsfile%}
+
+ -->
+
+{%extends "layout.html"%}
+{%block title%}
+Visualization using sk-learn tsne algorithm
+{%endblock title%}
+{%block setting%}
+    <form action="{{ url_for('using_Tsne') }}" method="post" enctype="multipart/form-data">
+		Upload File:-<br>
+		<input type="file" name="file" /><br><br>
+		<b>Main Parameters:-</b><br>
+		Perplexity:<br>
+		<input type="text" name="perplexity" placeholder="default 30"><br>
+		Iterations:<br>
+		<input type="text" name="iterations" placeholder="default 1000"><br>
+		<input type="submit" value="submit" />
+    </form>
+
+{%endblock setting%}
+
+{%block plotting%}
+<div class="forclear">
+    <div id="timetaken"></div>
+	<div id="searchSetting">
+        <span>
+            <input type="text" id="searchval">
+            <button id="mybutton" onclick="myfunction()">search</button>
+            <span id="notfound"></span>
+        </span>
+    </div>
+</div>
+    <div id="plotDisplay">
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            
+             {% for message in messages %}
+             <h1>{{ message }}</h1>
+             {% endfor %}
+          
+         {% endif %}
+      {% endwith %}
+  	</div>
+    
+{%endblock plotting%}
+
+{%block jsfile%}
+	{% if data1 != None %}
+	  	<script type="text/javascript">
+	        var  data ={{data1.data | safe}};
+	        var d1=new Date();
+	       
+	    </script>
+	    <script type="text/javascript" src="static/plotting2.js?v=2.1"></script>
+	    <script type="text/javascript">
+	        var  d2=new Date()-d1;
+	        document.getElementById("timetaken").innerHTML= "Plotting time:"+ d2 + " ms,  Algorithm time:"+{{timeTaken}} +"s";
+     	</script>
     {% endif %}
 {%endblock jsfile%}
 
